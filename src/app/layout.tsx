@@ -12,31 +12,55 @@ const inter = Inter({
   display: "swap",
 });
 
+const BASE_URL = "https://www.wc26time.com";
+
 export const metadata: Metadata = {
+  metadataBase: new URL(BASE_URL),
   title: {
-    default: "WC 2026 · Match Schedule & Time Converter",
-    template: "%s · WC 2026",
+    default: "WC26 Time — World Cup 2026 Match Schedule & Local Kickoff Times",
+    template: "%s — WC26 Time",
   },
   description:
-    "World Cup 2026 match schedule with automatic timezone conversion. Never miss a kickoff — all times displayed in your local timezone.",
-  keywords: ["World Cup 2026", "football schedule", "match times", "timezone converter", "FIFA 2026"],
-  authors: [{ name: "WC2026 Schedule" }],
+    "View the World Cup 2026 match schedule in your local timezone. Live countdowns, fixtures and match kickoff times.",
+  keywords: [
+    "World Cup 2026", "FIFA World Cup 2026", "WC26", "football schedule",
+    "match times", "timezone converter", "kickoff times", "USA Canada Mexico",
+  ],
+  authors: [{ name: "WC26 Time" }],
+  alternates: {
+    canonical: BASE_URL,
+  },
   openGraph: {
     type: "website",
     locale: "en_US",
-    title: "WC 2026 · Match Schedule & Time Converter",
+    url: BASE_URL,
+    title: "WC26 Time — World Cup 2026 Match Schedule & Local Kickoff Times",
     description:
-      "World Cup 2026 match schedule with automatic local timezone conversion.",
-    siteName: "WC 2026 Schedule",
+      "View the World Cup 2026 match schedule in your local timezone. Live countdowns, fixtures and match kickoff times.",
+    siteName: "WC26 Time",
+    images: [
+      {
+        url: "/opengraph-image",
+        width: 1200,
+        height: 630,
+        alt: "WC26 Time — World Cup 2026 Match Schedule",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "WC 2026 · Match Schedule & Time Converter",
-    description: "Full World Cup 2026 schedule with times in your timezone.",
+    title: "WC26 Time — World Cup 2026 Match Schedule & Local Kickoff Times",
+    description:
+      "View the World Cup 2026 match schedule in your local timezone. Live countdowns, fixtures and match kickoff times.",
+    images: ["/opengraph-image"],
   },
   robots: {
     index: true,
     follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+    },
   },
 };
 
