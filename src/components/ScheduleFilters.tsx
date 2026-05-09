@@ -9,7 +9,7 @@ interface ScheduleFiltersProps {
   onSearchChange: (query: string) => void;
 }
 
-const groups = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P"];
+const groups = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L"];
 const timeFilters = [
   { value: "all", label: "All Matches" },
   { value: "today", label: "Today" },

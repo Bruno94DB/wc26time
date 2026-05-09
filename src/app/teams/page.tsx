@@ -156,7 +156,7 @@ export default function TeamsPage() {
                   <div className="flex-1 h-px bg-white/5" />
                   <span className="text-slate-600 text-xs">{groupTeams.length} teams</span>
                 </div>
-                <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
                   {groupTeams.map((team) => (
                     <TeamCard key={team.id} team={team} />
                   ))}

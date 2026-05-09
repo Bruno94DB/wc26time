@@ -15,6 +15,7 @@ interface MatchCardProps {
   stadium: Stadium;
   timezone: string;
   variant?: "default" | "featured" | "compact";
+  showDate?: boolean;
 }
 
 export default function MatchCard({
@@ -24,6 +25,7 @@ export default function MatchCard({
   stadium,
   timezone,
   variant = "default",
+  showDate = false,
 }: MatchCardProps) {
   const groupColor = match.group ? groupColors[match.group] : "";
 
@@ -199,6 +201,11 @@ export default function MatchCard({
 
         {/* Center: time & meta */}
         <div className="flex flex-col items-center gap-1 min-w-[100px] sm:min-w-[130px]">
+          {showDate && (
+            <span className="text-slate-500 text-[11px] font-medium">
+              {new Date(match.kickoff).toLocaleDateString("en-US", { timeZone: timezone, weekday: "short", month: "short", day: "numeric" })}
+            </span>
+          )}
           <span className="text-white font-bold text-base sm:text-lg tabular-nums">
             {formatKickoff(match.kickoff, timezone, "time")}
           </span>

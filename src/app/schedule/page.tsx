@@ -8,6 +8,7 @@ import { getUserTimezone, isToday, isTomorrow, isThisWeek, formatMatchDate } fro
 import MatchCard from "@/components/MatchCard";
 import TimezoneSelector from "@/components/TimezoneSelector";
 import ScheduleFilters from "@/components/ScheduleFilters";
+import GroupStandings from "@/components/GroupStandings";
 
 export default function SchedulePage() {
   const [timezone, setTimezone] = useState("UTC");
@@ -100,6 +101,13 @@ export default function SchedulePage() {
           />
         </div>
       </div>
+
+      {/* Group standings (when a specific group is selected) */}
+      {selectedGroup !== "all" && (
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-6">
+          <GroupStandings group={selectedGroup} />
+        </div>
+      )}
 
       {/* Match list */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">

@@ -9,6 +9,7 @@ export interface Stadium {
   surface: string;
   opened: number;
   imageGradient: string;
+  imageUrl?: string;
 }
 
 export const stadiums: Stadium[] = [
@@ -23,6 +24,7 @@ export const stadiums: Stadium[] = [
     surface: "FieldTurf",
     opened: 2010,
     imageGradient: "from-blue-900 to-slate-900",
+    imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/0/04/Metlife_stadium_%28Aerial_view%29.jpg/800px-Metlife_stadium_%28Aerial_view%29.jpg",
   },
   {
     id: "sofi",
@@ -35,6 +37,7 @@ export const stadiums: Stadium[] = [
     surface: "Matrix Turf",
     opened: 2020,
     imageGradient: "from-purple-900 to-slate-900",
+    imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b3/SoFi_Stadium_2023.jpg/800px-SoFi_Stadium_2023.jpg",
   },
   {
     id: "att",
@@ -47,6 +50,7 @@ export const stadiums: Stadium[] = [
     surface: "Grass",
     opened: 2009,
     imageGradient: "from-gray-800 to-blue-950",
+    imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/1/11/Arlington_June_2020_4_%28AT%26T_Stadium%29.jpg/800px-Arlington_June_2020_4_%28AT%26T_Stadium%29.jpg",
   },
   {
     id: "hard-rock",
@@ -59,6 +63,7 @@ export const stadiums: Stadium[] = [
     surface: "Bermuda Grass",
     opened: 1987,
     imageGradient: "from-teal-900 to-slate-900",
+    imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/c/ce/Hard_Rock_Stadium_for_Super_Bowl_LIV_%2849606710103%29.jpg/800px-Hard_Rock_Stadium_for_Super_Bowl_LIV_%2849606710103%29.jpg",
   },
   {
     id: "empower",
@@ -71,6 +76,7 @@ export const stadiums: Stadium[] = [
     surface: "Kentucky Bluegrass",
     opened: 2001,
     imageGradient: "from-orange-900 to-slate-900",
+    imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b0/Empower_Field_at_Mile_High_20241001.jpg/800px-Empower_Field_at_Mile_High_20241001.jpg",
   },
   {
     id: "levis",
@@ -83,6 +89,7 @@ export const stadiums: Stadium[] = [
     surface: "Natural Grass",
     opened: 2014,
     imageGradient: "from-red-900 to-slate-900",
+    imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a6/Levi%27s_Stadium_in_February_2016_prior_to_Super_Bowl_50_%2824398261729%29.jpg/800px-Levi%27s_Stadium_in_February_2016_prior_to_Super_Bowl_50_%2824398261729%29.jpg",
   },
   {
     id: "lincoln",
@@ -95,6 +102,7 @@ export const stadiums: Stadium[] = [
     surface: "Natural Grass",
     opened: 2003,
     imageGradient: "from-green-900 to-slate-900",
+    imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a1/Lincoln_Financial_Field_%28Aerial_view%29.jpg/800px-Lincoln_Financial_Field_%28Aerial_view%29.jpg",
   },
   {
     id: "allegiant",
@@ -107,6 +115,7 @@ export const stadiums: Stadium[] = [
     surface: "Grass",
     opened: 2020,
     imageGradient: "from-slate-700 to-slate-950",
+    imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/Allegiant_Stadium_Street_View_on_Super_Bowl_LVIII.jpg/800px-Allegiant_Stadium_Street_View_on_Super_Bowl_LVIII.jpg",
   },
   {
     id: "lumen",
@@ -119,6 +128,7 @@ export const stadiums: Stadium[] = [
     surface: "FieldTurf",
     opened: 2002,
     imageGradient: "from-cyan-900 to-slate-900",
+    imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Qwest_Field_North.jpg/800px-Qwest_Field_North.jpg",
   },
   {
     id: "arrowhead",
@@ -131,6 +141,7 @@ export const stadiums: Stadium[] = [
     surface: "Natural Grass",
     opened: 1972,
     imageGradient: "from-red-950 to-slate-900",
+    imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/Aerial_view_of_Arrowhead_Stadium_08-31-2013.jpg/800px-Aerial_view_of_Arrowhead_Stadium_08-31-2013.jpg",
   },
   {
     id: "gillette",
@@ -143,6 +154,7 @@ export const stadiums: Stadium[] = [
     surface: "FieldTurf",
     opened: 2002,
     imageGradient: "from-blue-950 to-slate-900",
+    imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/d/db/Gillette_Stadium_%28Top_View%29.jpg/800px-Gillette_Stadium_%28Top_View%29.jpg",
   },
   {
     id: "bc-place",
@@ -155,6 +167,7 @@ export const stadiums: Stadium[] = [
     surface: "FieldTurf",
     opened: 1983,
     imageGradient: "from-indigo-900 to-slate-900",
+    imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/f/ff/BC_Place_2015_Women%27s_FIFA_World_Cup.jpg/800px-BC_Place_2015_Women%27s_FIFA_World_Cup.jpg",
   },
   {
     id: "bmo",
@@ -167,6 +180,7 @@ export const stadiums: Stadium[] = [
     surface: "Natural Grass",
     opened: 2007,
     imageGradient: "from-rose-900 to-slate-900",
+    imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/91/Toronto_BMO_Field_in_2024.jpg/800px-Toronto_BMO_Field_in_2024.jpg",
   },
   {
     id: "azteca",
@@ -179,6 +193,7 @@ export const stadiums: Stadium[] = [
     surface: "Natural Grass",
     opened: 1966,
     imageGradient: "from-yellow-900 to-slate-900",
+    imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4b/Estadio_Azteca_y_sus_alrededores_46.jpg/800px-Estadio_Azteca_y_sus_alrededores_46.jpg",
   },
   {
     id: "bbva",
@@ -191,6 +206,7 @@ export const stadiums: Stadium[] = [
     surface: "Natural Grass",
     opened: 2015,
     imageGradient: "from-emerald-900 to-slate-900",
+    imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/5/57/Mexico_Guadalupe_Monterrey_Estadio_BBVA_Bancomer_fifa_world_cup_2026_6.JPG/800px-Mexico_Guadalupe_Monterrey_Estadio_BBVA_Bancomer_fifa_world_cup_2026_6.JPG",
   },
   {
     id: "akron",
@@ -203,6 +219,7 @@ export const stadiums: Stadium[] = [
     surface: "Natural Grass",
     opened: 2010,
     imageGradient: "from-sky-900 to-slate-900",
+    imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/1/10/Estadio_Akron_02-07-2022_cabecera_sur_lado_derecho_%283%29.jpg/800px-Estadio_Akron_02-07-2022_cabecera_sur_lado_derecho_%283%29.jpg",
   },
   {
     id: "nrg",
@@ -215,6 +232,7 @@ export const stadiums: Stadium[] = [
     surface: "Grass",
     opened: 2002,
     imageGradient: "from-red-900 to-gray-900",
+    imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3e/Nrg_stadium.jpg/800px-Nrg_stadium.jpg",
   },
   {
     id: "mercedes-benz",
@@ -227,6 +245,7 @@ export const stadiums: Stadium[] = [
     surface: "FieldTurf",
     opened: 2017,
     imageGradient: "from-slate-800 to-blue-950",
+    imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/1/10/Mercedes_Benz_Stadium_time_lapse_capture_2017-08-13.jpg/800px-Mercedes_Benz_Stadium_time_lapse_capture_2017-08-13.jpg",
   },
 ];
 

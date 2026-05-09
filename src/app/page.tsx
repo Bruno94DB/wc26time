@@ -296,6 +296,7 @@ export default function HomePage() {
                     stadium={stadium}
                     timezone={timezone}
                     variant="default"
+                    showDate
                   />
                 );
               })}

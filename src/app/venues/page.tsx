@@ -77,21 +77,30 @@ export default function VenuesPage() {
                     key={stadium.id}
                     className="group bg-navy-800/40 border border-white/5 rounded-2xl overflow-hidden hover:border-white/15 hover:shadow-xl hover:shadow-black/30 transition-all duration-300 hover:-translate-y-1"
                   >
-                    {/* Image placeholder with gradient */}
-                    <div className={`h-44 bg-gradient-to-br ${stadium.imageGradient} relative overflow-hidden`}>
-                      {/* Field lines decoration */}
-                      <div className="absolute inset-0 flex items-center justify-center opacity-10">
-                        <svg viewBox="0 0 300 200" className="w-full h-full">
-                          <rect x="10" y="10" width="280" height="180" fill="none" stroke="white" strokeWidth="2"/>
-                          <line x1="150" y1="10" x2="150" y2="190" stroke="white" strokeWidth="1.5"/>
-                          <circle cx="150" cy="100" r="35" fill="none" stroke="white" strokeWidth="1.5"/>
-                          <rect x="10" y="65" width="45" height="70" fill="none" stroke="white" strokeWidth="1.5"/>
-                          <rect x="245" y="65" width="45" height="70" fill="none" stroke="white" strokeWidth="1.5"/>
-                          <rect x="10" y="80" width="20" height="40" fill="none" stroke="white" strokeWidth="1.5"/>
-                          <rect x="270" y="80" width="20" height="40" fill="none" stroke="white" strokeWidth="1.5"/>
-                          <circle cx="150" cy="100" r="2" fill="white"/>
-                        </svg>
-                      </div>
+                    {/* Stadium image */}
+                    <div className="relative h-44 overflow-hidden">
+                      {stadium.imageUrl ? (
+                        <Image
+                          src={stadium.imageUrl}
+                          alt={stadium.name}
+                          fill
+                          className="object-cover group-hover:scale-105 transition-transform duration-500"
+                          sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
+                        />
+                      ) : (
+                        <div className={`h-full bg-gradient-to-br ${stadium.imageGradient} flex items-center justify-center`}>
+                          <svg viewBox="0 0 300 200" className="w-full h-full opacity-10">
+                            <rect x="10" y="10" width="280" height="180" fill="none" stroke="white" strokeWidth="2"/>
+                            <line x1="150" y1="10" x2="150" y2="190" stroke="white" strokeWidth="1.5"/>
+                            <circle cx="150" cy="100" r="35" fill="none" stroke="white" strokeWidth="1.5"/>
+                            <rect x="10" y="65" width="45" height="70" fill="none" stroke="white" strokeWidth="1.5"/>
+                            <rect x="245" y="65" width="45" height="70" fill="none" stroke="white" strokeWidth="1.5"/>
+                            <circle cx="150" cy="100" r="2" fill="white"/>
+                          </svg>
+                        </div>
+                      )}
+                      {/* Overlay for readability of badges */}
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
 
                       {/* Country badge */}
                       <div className="absolute top-3 right-3">
@@ -108,7 +117,7 @@ export default function VenuesPage() {
 
                       {/* Capacity badge */}
                       <div className="absolute bottom-3 left-3">
-                        <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-black/40 backdrop-blur text-white text-xs font-medium">
+                        <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-black/50 backdrop-blur text-white text-xs font-medium">
                           <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z" />
                           </svg>
