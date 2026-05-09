@@ -204,6 +204,30 @@ export const stadiums: Stadium[] = [
     opened: 2010,
     imageGradient: "from-sky-900 to-slate-900",
   },
+  {
+    id: "nrg",
+    name: "NRG Stadium",
+    city: "Houston",
+    state: "Texas",
+    country: "USA",
+    countryCode: "us",
+    capacity: 72_220,
+    surface: "Grass",
+    opened: 2002,
+    imageGradient: "from-red-900 to-gray-900",
+  },
+  {
+    id: "mercedes-benz",
+    name: "Mercedes-Benz Stadium",
+    city: "Atlanta",
+    state: "Georgia",
+    country: "USA",
+    countryCode: "us",
+    capacity: 71_000,
+    surface: "FieldTurf",
+    opened: 2017,
+    imageGradient: "from-slate-800 to-blue-950",
+  },
 ];
 
 export const getStadiumById = (id: string): Stadium | undefined =>
