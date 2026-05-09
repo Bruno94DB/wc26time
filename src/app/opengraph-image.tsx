@@ -19,7 +19,7 @@ export default function Image() {
           position: "relative",
         }}
       >
-        {/* Background pattern dots */}
+        {/* Background dot pattern */}
         <div
           style={{
             position: "absolute",
@@ -27,10 +27,11 @@ export default function Image() {
             backgroundImage:
               "radial-gradient(circle, rgba(255,255,255,0.04) 1px, transparent 1px)",
             backgroundSize: "40px 40px",
+            display: "flex",
           }}
         />
 
-        {/* Red accent glow */}
+        {/* Red glow */}
         <div
           style={{
             position: "absolute",
@@ -39,11 +40,13 @@ export default function Image() {
             width: "500px",
             height: "500px",
             borderRadius: "50%",
-            background: "radial-gradient(circle, rgba(220,38,38,0.15) 0%, transparent 70%)",
+            background:
+              "radial-gradient(circle, rgba(220,38,38,0.15) 0%, transparent 70%)",
+            display: "flex",
           }}
         />
 
-        {/* Content */}
+        {/* Main content */}
         <div
           style={{
             display: "flex",
@@ -51,7 +54,6 @@ export default function Image() {
             alignItems: "center",
             gap: "24px",
             position: "relative",
-            zIndex: 1,
           }}
         >
           {/* Badge */}
@@ -70,30 +72,32 @@ export default function Image() {
               letterSpacing: "0.05em",
             }}
           >
-            ⚽ Jun 11 – Jul 19, 2026
+            <span>⚽</span>
+            <span>Jun 11 – Jul 19, 2026</span>
           </div>
 
           {/* Title */}
           <div
             style={{
+              display: "flex",
+              alignItems: "baseline",
+              gap: "16px",
               fontSize: "72px",
               fontWeight: 900,
-              color: "white",
-              textAlign: "center",
               lineHeight: 1.1,
               letterSpacing: "-0.02em",
             }}
           >
-            World Cup{" "}
+            <span style={{ color: "white" }}>World Cup</span>
             <span style={{ color: "#ef4444" }}>2026</span>
           </div>
 
           {/* Subtitle */}
           <div
             style={{
+              display: "flex",
               fontSize: "30px",
               color: "#94a3b8",
-              textAlign: "center",
               fontWeight: 400,
             }}
           >
@@ -103,6 +107,7 @@ export default function Image() {
           {/* Domain */}
           <div
             style={{
+              display: "flex",
               fontSize: "22px",
               color: "#475569",
               fontWeight: 500,
@@ -113,7 +118,7 @@ export default function Image() {
           </div>
         </div>
 
-        {/* Flags row */}
+        {/* Flags */}
         <div
           style={{
             position: "absolute",
