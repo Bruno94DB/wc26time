@@ -14,6 +14,7 @@ export default function SchedulePage() {
   const [timezone, setTimezone] = useState("UTC");
   const [selectedGroup, setSelectedGroup] = useState("all");
   const [selectedTime, setSelectedTime] = useState("all");
+  const [selectedDate, setSelectedDate] = useState("");
   const [searchQuery, setSearchQuery] = useState("");
   const [mounted, setMounted] = useState(false);
 
@@ -27,10 +28,16 @@ export default function SchedulePage() {
       // Group filter
       if (selectedGroup !== "all" && match.group !== selectedGroup) return false;
 
-      // Time filter
-      if (selectedTime === "today" && !isToday(match.kickoff, timezone)) return false;
-      if (selectedTime === "tomorrow" && !isTomorrow(match.kickoff, timezone)) return false;
-      if (selectedTime === "week" && !isThisWeek(match.kickoff, timezone)) return false;
+      // Date filter takes priority over time filter
+      if (selectedDate) {
+        const matchDateLocal = new Date(match.kickoff).toLocaleDateString("en-CA", { timeZone: timezone });
+        if (matchDateLocal !== selectedDate) return false;
+      } else {
+        // Time filter
+        if (selectedTime === "today" && !isToday(match.kickoff, timezone)) return false;
+        if (selectedTime === "tomorrow" && !isTomorrow(match.kickoff, timezone)) return false;
+        if (selectedTime === "week" && !isThisWeek(match.kickoff, timezone)) return false;
+      }
 
       // Search filter
       if (searchQuery) {
@@ -47,7 +54,17 @@ export default function SchedulePage() {
 
       return true;
     });
-  }, [selectedGroup, selectedTime, searchQuery, timezone]);
+  }, [selectedGroup, selectedTime, selectedDate, searchQuery, timezone]);
+
+  const handleTimeChange = (time: string) => {
+    setSelectedTime(time);
+    setSelectedDate("");
+  };
+
+  const handleDateChange = (date: string) => {
+    setSelectedDate(date);
+    if (date) setSelectedTime("all");
+  };
 
   // Group by day
   const matchesByDay = useMemo(() => {
@@ -95,7 +112,9 @@ export default function SchedulePage() {
             selectedGroup={selectedGroup}
             onGroupChange={setSelectedGroup}
             selectedTime={selectedTime}
-            onTimeChange={setSelectedTime}
+            onTimeChange={handleTimeChange}
+            selectedDate={selectedDate}
+            onDateChange={handleDateChange}
             searchQuery={searchQuery}
             onSearchChange={setSearchQuery}
           />
@@ -137,6 +156,7 @@ export default function SchedulePage() {
               onClick={() => {
                 setSelectedGroup("all");
                 setSelectedTime("all");
+                setSelectedDate("");
                 setSearchQuery("");
               }}
               className="mt-4 px-4 py-2 bg-white/5 hover:bg-white/10 text-white text-sm rounded-lg transition-colors border border-white/10"

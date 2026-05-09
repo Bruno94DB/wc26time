@@ -70,13 +70,13 @@ export default function CountdownTimer({ kickoff, size = "md" }: CountdownTimerP
           <div
             className={`flex flex-col items-center ${
               size === "lg"
-                ? "bg-navy-800 border border-white/10 rounded-xl px-4 py-3 min-w-[72px]"
+                ? "bg-navy-800 border border-white/10 rounded-xl px-2.5 py-2 sm:px-4 sm:py-3 min-w-[52px] sm:min-w-[72px]"
                 : "bg-white/5 rounded-lg px-2.5 py-1.5 min-w-[44px]"
             }`}
           >
             <span
               className={`font-mono font-bold tabular-nums text-white ${
-                size === "lg" ? "text-3xl" : "text-xl"
+                size === "lg" ? "text-xl sm:text-3xl" : "text-xl"
               }`}
             >
               {String(unit.value).padStart(2, "0")}
@@ -92,7 +92,7 @@ export default function CountdownTimer({ kickoff, size = "md" }: CountdownTimerP
           {i < units.length - 1 && (
             <span
               className={`font-bold text-slate-600 ${
-                size === "lg" ? "text-2xl" : "text-lg"
+                size === "lg" ? "text-lg sm:text-2xl" : "text-lg"
               }`}
             >
               :

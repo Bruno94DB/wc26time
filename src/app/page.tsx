@@ -6,7 +6,7 @@ import Image from "next/image";
 import { matches } from "@/data/matches";
 import { teams, getTeamById } from "@/data/teams";
 import { getStadiumById } from "@/data/stadiums";
-import { getUserTimezone, isToday, formatKickoff, formatMatchDate, getFlagUrl } from "@/lib/utils";
+import { getUserTimezone, isToday, formatKickoff, formatMatchDate, getFlagUrl, getTimezoneOffset, getCountryFromTimezone } from "@/lib/utils";
 import TimezoneSelector from "@/components/TimezoneSelector";
 import CountdownTimer from "@/components/CountdownTimer";
 import MatchCard from "@/components/MatchCard";
@@ -62,7 +62,7 @@ export default function HomePage() {
           }}
         />
 
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 pb-20 lg:pt-24 lg:pb-28">
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-10 pb-12 sm:pt-16 sm:pb-20 lg:pt-24 lg:pb-28">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             {/* Left: Headline */}
             <div className="space-y-6 animate-slide-up">
@@ -126,7 +126,7 @@ export default function HomePage() {
                 {/* Glow effect */}
                 <div className="absolute inset-0 bg-gradient-to-br from-brand-red/10 to-orange-500/5 rounded-3xl blur-2xl" />
 
-                <div className="relative bg-navy-800/80 backdrop-blur border border-white/10 rounded-3xl p-8 space-y-6">
+                <div className="relative bg-navy-800/80 backdrop-blur border border-white/10 rounded-3xl p-5 sm:p-8 space-y-4 sm:space-y-6">
                   <div className="flex items-center justify-between">
                     <div>
                       <p className="text-slate-500 text-xs font-semibold uppercase tracking-wider">
@@ -146,7 +146,7 @@ export default function HomePage() {
                   {/* Teams */}
                   <div className="flex items-center justify-between gap-4">
                     <div className="flex flex-col items-center gap-3 flex-1">
-                      <div className="relative w-20 h-14 rounded-xl overflow-hidden shadow-xl ring-1 ring-white/10">
+                      <div className="relative w-14 h-10 sm:w-20 sm:h-14 rounded-xl overflow-hidden shadow-xl ring-1 ring-white/10">
                         <Image
                           src={getFlagUrl(nextMatchHome.countryCode, 160)}
                           alt={nextMatchHome.name}
@@ -165,14 +165,18 @@ export default function HomePage() {
                       <div className="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center">
                         <span className="text-slate-400 text-xs font-bold">VS</span>
                       </div>
-                      <span className="text-white font-bold text-2xl tabular-nums">
+                      <span className="text-white font-bold text-xl sm:text-2xl tabular-nums">
                         {mounted ? formatKickoff(nextMatch.kickoff, timezone, "time") : "--:--"}
                       </span>
-                      <span className="text-slate-500 text-xs">Local time</span>
+                      <span className="text-slate-500 text-xs">
+                        {mounted
+                          ? `Local (${getTimezoneOffset(timezone)}, ${getCountryFromTimezone(timezone)})`
+                          : "Local time"}
+                      </span>
                     </div>
 
                     <div className="flex flex-col items-center gap-3 flex-1">
-                      <div className="relative w-20 h-14 rounded-xl overflow-hidden shadow-xl ring-1 ring-white/10">
+                      <div className="relative w-14 h-10 sm:w-20 sm:h-14 rounded-xl overflow-hidden shadow-xl ring-1 ring-white/10">
                         <Image
                           src={getFlagUrl(nextMatchAway.countryCode, 160)}
                           alt={nextMatchAway.name}
@@ -189,7 +193,7 @@ export default function HomePage() {
                   </div>
 
                   {/* Countdown */}
-                  <div className="bg-navy-950/60 rounded-2xl p-4 flex flex-col items-center gap-2">
+                  <div className="bg-navy-950/60 rounded-2xl p-3 sm:p-4 flex flex-col items-center gap-2 overflow-x-auto">
                     <p className="text-slate-500 text-xs font-semibold uppercase tracking-wider">
                       Kickoff in
                     </p>

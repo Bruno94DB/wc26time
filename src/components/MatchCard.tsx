@@ -5,7 +5,7 @@ import Link from "next/link";
 import { Match } from "@/data/matches";
 import { Team, groupColors } from "@/data/teams";
 import { Stadium } from "@/data/stadiums";
-import { getFlagUrl, formatKickoff, cn } from "@/lib/utils";
+import { getFlagUrl, formatKickoff, getTimezoneOffset, getCountryFromTimezone, cn } from "@/lib/utils";
 import CountdownTimer from "./CountdownTimer";
 
 interface MatchCardProps {
@@ -216,6 +216,9 @@ export default function MatchCard({
               </span>
             )}
           </div>
+          <span className="text-slate-600 text-[10px] tabular-nums">
+            {getTimezoneOffset(timezone)} · {getCountryFromTimezone(timezone)}
+          </span>
         </div>
 
         {/* Away team */}
