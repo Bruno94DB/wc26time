@@ -201,8 +201,18 @@ export default function MatchDetailClient({
 
             {/* Stadium card */}
             <div className="bg-navy-800/40 border border-white/5 rounded-2xl overflow-hidden">
-              <div className={`h-24 bg-gradient-to-r ${stadium.imageGradient} flex items-end p-4`}>
-                <div className="flex items-center gap-2">
+              <div className={`relative h-48 sm:h-64 bg-gradient-to-r ${stadium.imageGradient}`}>
+                {stadium.imageUrl && (
+                  <Image
+                    src={stadium.imageUrl}
+                    alt={stadium.name}
+                    fill
+                    className="object-cover"
+                    sizes="(max-width: 896px) 100vw, 896px"
+                  />
+                )}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
+                <div className="absolute bottom-0 left-0 p-4 flex items-center gap-2">
                   <div className="w-6 h-4 relative rounded overflow-hidden">
                     <Image
                       src={getFlagUrl(stadium.countryCode, 40)}
@@ -212,7 +222,7 @@ export default function MatchDetailClient({
                       sizes="24px"
                     />
                   </div>
-                  <span className="text-white/70 text-xs">{stadium.country}</span>
+                  <span className="text-white/80 text-xs font-medium">{stadium.country}</span>
                 </div>
               </div>
 
