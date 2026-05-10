@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useMemo } from "react";
 import { getAllTimezones, formatTimezoneLabel, getUserTimezone } from "@/lib/utils";
 
 interface TimezoneSelectorProps {
@@ -11,7 +11,14 @@ interface TimezoneSelectorProps {
 
 export default function TimezoneSelector({ value, onChange, className = "" }: TimezoneSelectorProps) {
   const [mounted, setMounted] = useState(false);
-  const timezones = getAllTimezones();
+
+  // If the user's actual timezone isn't in the predefined list, prepend it
+  // so the select always shows the correct selected value
+  const timezones = useMemo(() => {
+    const all = getAllTimezones();
+    if (value && !all.includes(value)) return [value, ...all];
+    return all;
+  }, [value]);
 
   useEffect(() => {
     setMounted(true);
