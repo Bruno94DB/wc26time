@@ -6,6 +6,7 @@ import { teams, getTeamById, getTeamsByGroup } from "@/data/teams";
 import { matches } from "@/data/matches";
 import { getStadiumById } from "@/data/stadiums";
 import { getFlagUrl } from "@/lib/utils";
+import TeamFixturesClient from "./TeamFixturesClient";
 
 interface Props {
   params: Promise<{ team: string }>;
@@ -38,17 +39,6 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   };
 }
 
-function formatUTCDate(iso: string) {
-  return new Date(iso).toLocaleDateString("en-US", {
-    timeZone: "UTC", weekday: "long", month: "long", day: "numeric", year: "numeric",
-  });
-}
-
-function formatUTCTime(iso: string) {
-  return new Date(iso).toLocaleTimeString("en-US", {
-    timeZone: "UTC", hour: "2-digit", minute: "2-digit", hour12: false,
-  }) + " UTC";
-}
 
 export default async function TeamWorldCupPage({ params }: Props) {
   const { team: teamId } = await params;
@@ -68,6 +58,15 @@ export default async function TeamWorldCupPage({ params }: Props) {
 
   const venues = teamMatches.map((m) => getStadiumById(m.stadiumId)!);
 
+  const fixtures = teamMatches.map((match, i) => ({
+    match,
+    home: getTeamById(match.homeTeamId)!,
+    away: getTeamById(match.awayTeamId)!,
+    stadium: getStadiumById(match.stadiumId)!,
+    opponent: match.homeTeamId === teamId ? getTeamById(match.awayTeamId)! : getTeamById(match.homeTeamId)!,
+    matchday: i + 1,
+  }));
+
   const faqs = [
     {
       q: `Is ${team.name} in the 2026 World Cup?`,
@@ -75,7 +74,7 @@ export default async function TeamWorldCupPage({ params }: Props) {
     },
     {
       q: `When does ${team.name} play in the 2026 World Cup?`,
-      a: `${team.name} plays three group stage matches: vs ${opponents[0]?.name} on ${formatUTCDate(teamMatches[0]?.kickoff)}, vs ${opponents[1]?.name} on ${formatUTCDate(teamMatches[1]?.kickoff)}, and vs ${opponents[2]?.name} on ${formatUTCDate(teamMatches[2]?.kickoff)}.`,
+      a: `${team.name} plays three group stage matches: vs ${opponents[0]?.name} on ${new Date(teamMatches[0]?.kickoff).toLocaleDateString("en-US", { timeZone: "UTC", weekday: "long", month: "long", day: "numeric", year: "numeric" })}, vs ${opponents[1]?.name} on ${new Date(teamMatches[1]?.kickoff).toLocaleDateString("en-US", { timeZone: "UTC", weekday: "long", month: "long", day: "numeric", year: "numeric" })}, and vs ${opponents[2]?.name} on ${new Date(teamMatches[2]?.kickoff).toLocaleDateString("en-US", { timeZone: "UTC", weekday: "long", month: "long", day: "numeric", year: "numeric" })}.`,
     },
     {
       q: `What group is ${team.name} in at the 2026 World Cup?`,
@@ -128,56 +127,7 @@ export default async function TeamWorldCupPage({ params }: Props) {
 
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-14">
         {/* Fixtures */}
-        <section>
-          <h2 className="text-xl font-bold text-white mb-5">{team.name} Fixtures</h2>
-          <div className="space-y-4">
-            {teamMatches.map((match, i) => {
-              const home = getTeamById(match.homeTeamId)!;
-              const away = getTeamById(match.awayTeamId)!;
-              const stadium = getStadiumById(match.stadiumId)!;
-              const opponent = match.homeTeamId === teamId ? away : home;
-
-              return (
-                <Link
-                  key={match.id}
-                  href={`/matches/${match.slug}`}
-                  className="group block bg-navy-800/40 border border-white/5 rounded-xl p-5 hover:border-white/15 hover:bg-navy-800/70 transition-all"
-                >
-                  <div className="flex flex-col sm:flex-row sm:items-center gap-4 justify-between">
-                    <div className="flex items-center gap-4 flex-1">
-                      <div className="flex items-center gap-2.5">
-                        <div className="relative w-10 h-7 rounded-md overflow-hidden shadow flex-shrink-0">
-                          <Image src={getFlagUrl(home.countryCode, 80)} alt={home.name} fill className="object-cover" sizes="40px" />
-                        </div>
-                        <span className={`font-bold text-sm ${home.id === teamId ? "text-white" : "text-slate-300"}`}>{home.name}</span>
-                      </div>
-                      <span className="text-slate-600 text-xs font-bold">vs</span>
-                      <div className="flex items-center gap-2.5">
-                        <div className="relative w-10 h-7 rounded-md overflow-hidden shadow flex-shrink-0">
-                          <Image src={getFlagUrl(away.countryCode, 80)} alt={away.name} fill className="object-cover" sizes="40px" />
-                        </div>
-                        <span className={`font-bold text-sm ${away.id === teamId ? "text-white" : "text-slate-300"}`}>{away.name}</span>
-                      </div>
-                    </div>
-                    <div className="flex flex-col gap-1 sm:items-end text-xs text-slate-500">
-                      <span className="text-brand-red font-semibold">
-                        Matchday {i + 1} · vs {opponent.name} (#{opponent.fifaRanking})
-                      </span>
-                      <span>{formatUTCDate(match.kickoff)}</span>
-                      <span>{formatUTCTime(match.kickoff)}</span>
-                      <span>{stadium.name}, {stadium.city}</span>
-                    </div>
-                  </div>
-                </Link>
-              );
-            })}
-          </div>
-          <p className="text-slate-600 text-xs mt-3">
-            Times shown in UTC.{" "}
-            <Link href="/schedule" className="text-brand-red hover:text-red-400">Open the schedule</Link>
-            {" "}for kickoff times in your local timezone.
-          </p>
-        </section>
+        <TeamFixturesClient fixtures={fixtures} teamId={teamId} teamName={team.name} />
 
         {/* Group table */}
         <section>

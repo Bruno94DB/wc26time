@@ -6,7 +6,7 @@ import Link from "next/link";
 import { Match, roundLabels } from "@/data/matches";
 import { Team, groupColors } from "@/data/teams";
 import { Stadium } from "@/data/stadiums";
-import { getUserTimezone, getFlagUrl, formatKickoff, formatMatchDate, cn } from "@/lib/utils";
+import { getUserTimezone, getFlagUrl, formatKickoff, formatMatchDate, getTimezoneOffset, getCountryFromTimezone, cn } from "@/lib/utils";
 import CountdownTimer from "@/components/CountdownTimer";
 import TimezoneSelector from "@/components/TimezoneSelector";
 
@@ -110,6 +110,11 @@ export default function MatchDetailClient({
                   {mounted ? formatKickoff(match.kickoff, timezone, "time") : "--:--"}
                 </p>
                 <p className="text-slate-500 text-xs mt-1">Local kickoff</p>
+                {mounted && (
+                  <p className="text-slate-600 text-[10px] mt-0.5">
+                    {getTimezoneOffset(timezone)} · {getCountryFromTimezone(timezone)}
+                  </p>
+                )}
               </div>
             </div>
 
@@ -184,7 +189,7 @@ export default function MatchDetailClient({
 
               {[
                 { label: "Date", value: mounted ? formatMatchDate(match.kickoff, timezone) : "" },
-                { label: "Kickoff", value: mounted ? formatKickoff(match.kickoff, timezone, "time") : "--:--" },
+                { label: "Kickoff", value: mounted ? `${formatKickoff(match.kickoff, timezone, "time")} (${getTimezoneOffset(timezone)} · ${getCountryFromTimezone(timezone)})` : "--:--" },
                 { label: "Round", value: roundLabel },
                 match.group ? { label: "Group", value: `Group ${match.group}` } : null,
                 match.matchday ? { label: "Matchday", value: `${match.matchday} of 3` } : null,
