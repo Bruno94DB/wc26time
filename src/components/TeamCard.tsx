@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import { Team, groupColors } from "@/data/teams";
 import { getFlagUrl, cn } from "@/lib/utils";
 
@@ -8,7 +9,7 @@ interface TeamCardProps {
 
 export default function TeamCard({ team }: TeamCardProps) {
   return (
-    <div className="group bg-navy-800/60 border border-white/5 rounded-2xl p-5 hover:bg-navy-800/90 hover:border-white/15 transition-all duration-300 hover:shadow-xl hover:shadow-black/30 hover:-translate-y-1 cursor-default">
+    <Link href={`/world-cup-2026/${team.id}`} className="group bg-navy-800/60 border border-white/5 rounded-2xl p-5 hover:bg-navy-800/90 hover:border-white/15 transition-all duration-300 hover:shadow-xl hover:shadow-black/30 hover:-translate-y-1 block">
       {/* Flag */}
       <div className="relative w-full rounded-xl overflow-hidden shadow-lg mb-4" style={{ paddingBottom: "62.5%" }}>
         <Image
@@ -46,6 +47,6 @@ export default function TeamCard({ team }: TeamCardProps) {
           <span className="text-slate-400 text-xs font-medium">{team.continent}</span>
         </div>
       </div>
-    </div>
+    </Link>
   );
 }
