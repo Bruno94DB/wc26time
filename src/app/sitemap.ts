@@ -1,5 +1,6 @@
 import { MetadataRoute } from "next";
 import { matches } from "@/data/matches";
+import { teams } from "@/data/teams";
 
 const BASE_URL = "https://www.wc26time.com";
 
@@ -25,5 +26,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.5,
     }));
 
-  return [...staticRoutes, ...matchRoutes];
+  const teamRoutes: MetadataRoute.Sitemap = teams.map((t) => ({
+    url: `${BASE_URL}/world-cup-2026/${t.id}`,
+    lastModified: new Date(),
+    changeFrequency: "weekly" as const,
+    priority: 0.7,
+  }));
+
+  return [...staticRoutes, ...teamRoutes, ...matchRoutes];
 }
