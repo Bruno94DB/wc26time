@@ -30,12 +30,12 @@ export default function Image() {
             Match Schedule
           </div>
           <div style={{ display: "flex", fontSize: 30, color: "#94a3b8", marginBottom: 48 }}>
-            All 80 fixtures · Local kickoff times · Jun 11 – Jul 19
+            All 104 fixtures · Local kickoff times · Jun 11 – Jul 19
           </div>
 
           {/* Stats row */}
           <div style={{ display: "flex", gap: 24 }}>
-            {[["80", "Matches"], ["48", "Teams"], ["16", "Venues"], ["3", "Nations"]].map(([v, l]) => (
+            {[["104", "Matches"], ["48", "Teams"], ["16", "Venues"], ["3", "Nations"]].map(([v, l]) => (
               <div key={l} style={{ display: "flex", flexDirection: "column", alignItems: "center", background: "rgba(255,255,255,0.06)", border: "1px solid rgba(255,255,255,0.08)", borderRadius: 16, padding: "20px 32px", minWidth: 120 }}>
                 <span style={{ color: "white", fontSize: 40, fontWeight: 900 }}>{v}</span>
                 <span style={{ color: "#64748b", fontSize: 16, marginTop: 4 }}>{l}</span>

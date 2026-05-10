@@ -4,12 +4,12 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "World Cup 2026 Schedule — All Fixtures & Match Dates",
   description:
-    "The complete FIFA World Cup 2026 match schedule. 80 fixtures across 16 stadiums in the USA, Canada and Mexico. Group stage, knockout rounds and the Final on July 19, 2026.",
+    "The complete FIFA World Cup 2026 match schedule. 104 fixtures across 16 stadiums in the USA, Canada and Mexico. Group stage, knockout rounds and the Final on July 19, 2026.",
   alternates: { canonical: "https://www.wc26time.com/world-cup-2026-schedule" },
   openGraph: {
     title: "World Cup 2026 Schedule — All Fixtures & Match Dates",
     description:
-      "The complete FIFA World Cup 2026 match schedule. 80 fixtures across 16 stadiums in the USA, Canada and Mexico.",
+      "The complete FIFA World Cup 2026 match schedule. 104 fixtures across 16 stadiums in the USA, Canada and Mexico.",
     url: "https://www.wc26time.com/world-cup-2026-schedule",
   },
 };
@@ -70,7 +70,7 @@ const faqs = [
   },
   {
     q: "How many matches are in the 2026 World Cup?",
-    a: "The 2026 World Cup features 80 matches in total — 72 group stage matches across 12 groups, followed by the Round of 32 (16 matches), Round of 16, Quarter-finals, Semi-finals, a Third-place play-off, and the Final.",
+    a: "The 2026 World Cup features 104 matches in total — 72 group stage matches across 12 groups, followed by a Round of 32 (16 matches), Round of 16 (8 matches), Quarter-finals (4), Semi-finals (2), a Third-place play-off, and the Final.",
   },
   {
     q: "Where is the 2026 World Cup being played?",
@@ -115,7 +115,7 @@ export default function WorldCup2026SchedulePage() {
             World Cup 2026 Schedule
           </h1>
           <p className="text-slate-400 text-base sm:text-lg max-w-2xl leading-relaxed">
-            The complete FIFA World Cup 2026 fixture list — 80 matches across 16 stadiums in
+            The complete FIFA World Cup 2026 fixture list — 104 matches across 16 stadiums in
             the United States, Canada and Mexico, running from June 11 to July 19, 2026.
           </p>
         </div>
@@ -221,7 +221,7 @@ export default function WorldCup2026SchedulePage() {
         <section className="bg-gradient-to-r from-navy-800 to-navy-700 border border-white/10 rounded-2xl p-8 text-center space-y-4">
           <h2 className="text-2xl font-black text-white">View the Full Interactive Schedule</h2>
           <p className="text-slate-400 text-sm max-w-md mx-auto">
-            All 80 matches with kickoff times automatically converted to your local timezone.
+            All 104 matches with kickoff times automatically converted to your local timezone.
             Filter by group, date, or team.
           </p>
           <Link

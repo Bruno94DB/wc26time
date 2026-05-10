@@ -131,7 +131,7 @@ export default function WorldCup2026CountdownPage() {
             {[
               { value: "48", label: "Nations" },
               { value: "12", label: "Groups" },
-              { value: "80", label: "Matches" },
+              { value: "104", label: "Matches" },
               { value: "16", label: "Venues" },
             ].map((s) => (
               <div key={s.label} className="bg-navy-800/40 border border-white/5 rounded-xl p-4 text-center">
@@ -159,7 +159,7 @@ export default function WorldCup2026CountdownPage() {
         <section className="bg-gradient-to-r from-navy-800 to-navy-700 border border-white/10 rounded-2xl p-8 text-center space-y-4">
           <h2 className="text-2xl font-black text-white">See the Full Match Schedule</h2>
           <p className="text-slate-400 text-sm max-w-md mx-auto">
-            All 80 fixtures with kickoff times in your local timezone. Filter by group, team or date.
+            All 104 fixtures with kickoff times in your local timezone. Filter by group, team or date.
           </p>
           <Link
             href="/schedule"

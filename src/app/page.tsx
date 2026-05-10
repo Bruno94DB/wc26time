@@ -83,7 +83,7 @@ export default function HomePage() {
               </h1>
 
               <p className="text-slate-400 text-lg leading-relaxed max-w-xl">
-                All 80 matches. Times automatically converted to{" "}
+                All 104 matches. Times automatically converted to{" "}
                 <span className="text-white font-medium">your local timezone</span>.
                 Never miss a kickoff.
               </p>
@@ -228,7 +228,7 @@ export default function HomePage() {
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-0 sm:divide-x divide-white/5">
             {[
               { label: "Nations", value: "48" },
-              { label: "Matches", value: "80" },
+              { label: "Matches", value: "104" },
               { label: "Venues", value: "16" },
               { label: "Days", value: "39" },
             ].map((stat) => (
