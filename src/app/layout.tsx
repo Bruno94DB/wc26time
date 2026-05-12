@@ -56,6 +56,10 @@ export const metadata: Metadata = {
       "View the World Cup 2026 match schedule in your local timezone. Live countdowns, fixtures and match kickoff times.",
     images: ["/opengraph-image"],
   },
+  icons: {
+    icon: "/favicon.ico",
+    apple: "/apple-touch-icon.png",
+  },
   robots: {
     index: true,
     follow: true,
