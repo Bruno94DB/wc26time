@@ -1,0 +1,21 @@
+{
+  "name": "WC26 Time",
+  "short_name": "WC26",
+  "description": "World Cup 2026 match schedule in your local timezone",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0a0f1c",
+  "theme_color": "#10b981",
+  "icons": [
+    {
+      "src": "/favicon-32x32.png",
+      "sizes": "32x32",
+      "type": "image/png"
+    },
+    {
+      "src": "/apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png"
+    }
+  ]
+}
